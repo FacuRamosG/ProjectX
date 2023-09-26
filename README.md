@@ -1,0 +1,1 @@
+Se creó un proyecto utilizando las tecnologías React, TypeScript, Next.js y Supabase para desarrollar una aplicación similar a Twitter. Los usuarios pueden iniciar sesión con sus cuentas de GitHub, publicar mensajes y eliminar sus propios posts en esta plataforma.
