@@ -1,5 +1,3 @@
-import { type Database } from '../types/database'
-
 export interface Post {
   content: string
   created_at: string
