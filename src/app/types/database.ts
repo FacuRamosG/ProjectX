@@ -40,8 +40,8 @@ export interface Database {
       users: {
         Row: {
           avatar_url: string
-          created_at: string
-          id: string
+          created_at?: string
+          id?: string
           name: string | null
           user_name: string
         }

@@ -1,8 +1,13 @@
 import { type Database } from '../types/database'
 
-type PostEntity = Database['public']['Tables']['posts']['Row']
-type UserEntity = Database['public']['Tables']['users']['Row']
-
-export type Post = PostEntity & {
-  user: UserEntity
+export interface Post {
+  content: string
+  created_at: string
+  id: string
+  user_id: string
+  user: {
+    name: string | null
+    avatar_url: string
+    user_name: string
+  } | null
 }
