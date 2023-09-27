@@ -14,7 +14,7 @@ export function ComposePostArea () {
   const [showAutocomplete, setShowAutocomplete] = useState(false)
   const { refine } = useSearchBox()
 
-  const { top, height } = textAreaRef.current
+  const { top, height } = textAreaRef.current !== null
     ? getCaretCoordinates(textAreaRef.current, textAreaRef.current.selectionEnd)
     : { top: 0, height: 0 }
 
@@ -31,16 +31,17 @@ export function ComposePostArea () {
   }, [pending])
 
   const handleInput = () => {
-    if (textAreaRef === null) return
-    const { value, selectionEnd = 0 } = textAreaRef?.current
-    const { word } = getActiveToken(value, selectionEnd)
-    const shouldOpenAutocomplete = /^@\w{1,15}$/.test(word)
-    setShowAutocomplete(shouldOpenAutocomplete)
-    shouldOpenAutocomplete && refine(word.slice(1))
+    if (textAreaRef.current !== null) {
+      const { value, selectionEnd = 0 } = textAreaRef.current
+      const { word } = getActiveToken(value, selectionEnd)
+      const shouldOpenAutocomplete = /^@\w{1,15}$/.test(word)
+      setShowAutocomplete(shouldOpenAutocomplete)
+      shouldOpenAutocomplete && refine(word.slice(1))
+    }
   }
 
   const handleSelection = (userHandle: string) => {
-    if (textAreaRef === null) return
+    if (textAreaRef.current === null) return
     const { value, selectionEnd = 0 } = textAreaRef.current
     const { word, range } = getActiveToken(value, selectionEnd)
     const [index] = range
