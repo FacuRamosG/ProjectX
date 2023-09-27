@@ -10,7 +10,7 @@ export function DeleteButton ({ postId, userId }: { postId: string, userId: stri
 
   const deletePost = async () => {
     setDeleiting(true)
-    await fetch('http://localhost:3000/posts', {
+    await fetch('https://project-x-skv9.vercel.app/posts', {
       method: 'delete',
       body: JSON.stringify({ id: postId, userId })
     })
